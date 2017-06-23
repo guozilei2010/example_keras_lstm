@@ -1,12 +1,13 @@
-
+# 主要作用是载入数据集，处理npz文件，因为keras自带的访问不能获取，只能本地完成了
 # (X_train, y_train), (X_test, y_test) = imdb.load_data(num_words=max_features)input_file = "D:\用户目录\Desktop\郭磊\keras\imdb.npz"
 from __future__ import absolute_import
 from six.moves import zip
 import numpy as np
 import json
 import warnings
-
+# 下面的函数是keras的sequence的自带函数，但是我导入不进去，只能取出来了
 def _remove_long_seq(maxlen, seq, label):
+    # 移除超过指定最大长度的序列，返回，序列 和 标签
     """Removes sequences that exceed the maximum length.
 
     # Arguments
@@ -25,7 +26,7 @@ def _remove_long_seq(maxlen, seq, label):
     return new_seq, new_label
 
 
-# get_file_path 是文件的地址
+# get_file_path 是文件的地址，本来是个keras的函数
 def load_data(get_file_path, num_words=None, skip_top=0,
               maxlen=None, seed=113,
               start_char=1, oov_char=2, index_from=3, **kwargs):
